@@ -26,9 +26,5 @@ public class VectorStack<T> implements Stack<T> {
     @Override
     public int size() {
         return data.size();
-    }
-
-
-    
-    
+    }   
 }

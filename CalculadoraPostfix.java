@@ -1,0 +1,54 @@
+public class CalculadoraPostfix {
+
+    private Stack<Integer> stack;
+
+    public CalculadoraPostfix(Stack<Integer> stack) {
+        this.stack = stack;
+    }
+
+    public int evaluar(String expresion) {
+
+        String[] tokens = expresion.split(" ");
+
+        for (String token : tokens) {
+
+            if (Character.isDigit(token.charAt(0))) {
+                int numero = Integer.parseInt(token);
+                stack.push(numero);
+            } else {
+
+                if (stack.size() < 2) {
+                    throw new IllegalArgumentException("Expresion postfix invalida: faltan operandos");
+                }
+
+                int b = stack.pop();
+                int a = stack.pop();
+                int resultado;
+
+                if (token.equals("+")) {
+                    resultado = a + b;
+                } else if (token.equals("-")) {
+                    resultado = a - b;
+                } else if (token.equals("*")) {
+                    resultado = a * b;
+                } else if (token.equals("/")) {
+                    if (b == 0) {
+                        throw new ArithmeticException("Division entre cero");
+                    }
+                    resultado = a / b;
+                } else {
+                    throw new IllegalArgumentException("Operador invalido: " + token);
+                }
+
+                stack.push(resultado);
+            }
+        }
+
+        if (stack.size() != 1) {
+            throw new IllegalArgumentException("Expresion postfix invalida");
+        }
+
+        return stack.pop();
+    }
+}
+
