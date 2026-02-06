@@ -1,3 +1,4 @@
+package src;
 public class CalculadoraPostfix {
 
     private Stack<Integer> stack;
@@ -8,13 +9,23 @@ public class CalculadoraPostfix {
 
     public int evaluar(String expresion) {
 
-        String[] tokens = expresion.split(" ");
+        while(stack.size() > 0){
+            stack.pop();
+        }
+
+        String[] tokens = expresion.trim().split(" ");
 
         for (String token : tokens) {
 
+            if(token.isEmpty()){
+                continue;
+            }
+
             if (Character.isDigit(token.charAt(0))) {
+
                 int numero = Integer.parseInt(token);
                 stack.push(numero);
+
             } else {
 
                 if (stack.size() < 2) {
@@ -32,10 +43,13 @@ public class CalculadoraPostfix {
                 } else if (token.equals("*")) {
                     resultado = a * b;
                 } else if (token.equals("/")) {
+
                     if (b == 0) {
                         throw new ArithmeticException("Division entre cero");
                     }
+
                     resultado = a / b;
+
                 } else {
                     throw new IllegalArgumentException("Operador invalido: " + token);
                 }
@@ -51,4 +65,3 @@ public class CalculadoraPostfix {
         return stack.pop();
     }
 }
-
