@@ -6,7 +6,7 @@
  * @param <T> tipo de elementos almacenados en la pila
  */
 
-package src;
+
 public interface Stack<T>{
     /**
      * Inserta un elemento en la cima de la pila.

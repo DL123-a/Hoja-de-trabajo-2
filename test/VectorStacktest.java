@@ -3,8 +3,6 @@
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-import Stack;
-import VectorStack;
 
 public class VectorStacktest {
 
