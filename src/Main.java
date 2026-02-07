@@ -4,6 +4,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 
 public class Main {
+/**
+ * Clase principal del programa.
+ * Lee expresiones postfix desde un archivo de texto y muestra
+ * el resultado de su evaluación.
+ */
 
     public static void main(String[] args) {
 
